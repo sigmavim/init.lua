@@ -7,16 +7,19 @@
 -- lua/sigma/utils/init.lua
 -- Lua util functions for Neovim
 
+local sigma = require('sigma')
+
 local keyset = function(mode, keymap, command, opts)
     vim.keymap.set(mode, keymap, command, opts)
 end
 
 local M = {
     is_enabled = function(plugin)
-        return vim.g['sigma#plugins'][plugin] ~= nil and vim.g['sigma#plugins'][plugin] ~= 0
+        return sigma.plugins[plugin] ~= nil and sigma.plugins[plugin] ~= 0
     end,
     keyset = keyset,
     noremap = function(mode, keymap, command, opts)
+        opts = opts or {}
         opts.noremap = true
         keyset(mode, keymap, command, opts)
     end,

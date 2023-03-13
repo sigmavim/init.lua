@@ -8,8 +8,8 @@
 -- Tweaks and fixes
 
 local M = {
-    setup = function (tweaks)
-        for tweak in tweaks do
+    setup = function(tweaks)
+        for _, tweak in pairs(tweaks) do
             require('sigma.tweaks.' .. tweak)
         end
     end

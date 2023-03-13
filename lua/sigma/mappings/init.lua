@@ -38,11 +38,11 @@ local M = {
 
         if (vim.env.TERM == 'xterm-kitty' or vim.env.TMUX ~= '') then
             if (vim.env.TMUX ~= '') then
-                utils.noremap('n', '<leader>gg', '<Cmd>call sigma#run("lazygit")<C-j><CR>', { silent = true })
+                utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun("lazygit")<C-j><CR>', { silent = true })
             else
-                utils.noremap('n', '<leader>gg', '<Cmd>call sigma#run("lazygit -p")<C-j><CR>', { silent = true })
+                utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun("lazygit -p")<C-j><CR>', { silent = true })
             end
-            utils.noremap('n', '<leader>gg', '<Cmd>call sigma#run()<C-j><CR>', { silent = true })
+            utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun()<C-j><CR>', { silent = true })
         end
 
         utils.noremap('n', '<leader>uu', '<Cmd>UndotreeToggle<CR>')
@@ -65,10 +65,10 @@ local M = {
         utils.noremap('n', '<leader>wl', '<C-w>l')
         utils.noremap('n', '<leader>wj', '<C-w>j')
         utils.noremap('n', '<leader>wk', '<C-w>k')
-        utils.noremap('n', '<leader>w<Left> <C-w>h')
-        utils.noremap('n', '<leader>w<Right> <C-w>l')
-        utils.noremap('n', '<leader>w<Down> <C-w>j')
-        utils.noremap('n', '<leader>w<Up> <C-w>k')
+        utils.noremap('n', '<leader>w<Left>', '<C-w>h')
+        utils.noremap('n', '<leader>w<Right>', '<C-w>l')
+        utils.noremap('n', '<leader>w<Down>', '<C-w>j')
+        utils.noremap('n', '<leader>w<Up>', '<C-w>k')
 
         -- resize windows
         utils.noremap('n', '<A-Left>', '<C-w>>')

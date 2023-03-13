@@ -9,69 +9,87 @@
 
 local plugins = {
     ['wmwnuk/sigma.nvim'] = { branch = 'main' },
-    ['voidekh/kyotonight.vim'] = { ['do'] = function()
+    ['voidekh/kyotonight.vim'] = { config = function()
         require('sigma.plugins.kyotonight').setup()
     end },
-    ['907th/vim-auto-save'] = { ['do'] = function()
+    ['907th/vim-auto-save'] = { config = function()
         require('sigma.plugins.autosave').setup()
     end },
-    ['eshion/vim-sync'] = { ['do'] = function()
+    ['eshion/vim-sync'] = { config = function()
         require('sigma.plugins.sync').setup()
     end },
     ['skywind3000/asyncrun.vim'] = 1,
-    ['lambdalisue/suda.vim'] = { ['do'] = function()
+    ['lambdalisue/suda.vim'] = { config = function()
         require('sigma.plugins.suda').setup()
     end },
     ['tpope/vim-abolish'] = 1,
     ['honza/vim-snippets'] = 1,
     ['dbeniamine/cheat.sh-vim'] = 1,
-    ['mcchrish/nnn.vim'] = { ['do'] = function()
+    ['mcchrish/nnn.vim'] = { config = function()
         require('sigma.plugins.nnn').setup()
     end },
     ['leafOfTree/vim-project'] = 1,
     ['mbbill/undotree'] = 1,
     ['junegunn/fzf'] = 1,
-    ['noahfrederick/vim-skeleton'] = { ['do'] = function()
+    ['noahfrederick/vim-skeleton'] = { config = function()
         require('sigma.plugins.skeleton').setup()
     end },
-    ['mhinz/vim-startify'] = { ['do'] = function()
+    ['mhinz/vim-startify'] = { config = function()
         require('sigma.plugins.startify').setup()
     end },
-    ['nvim-lualine/lualine.nvim'] = 1,
-    ['numToStr/Comment.nvim'] = { ['do'] = function()
+    ['nvim-lualine/lualine.nvim'] = { config = function()
+        require('sigma.plugins.lualine').setup()
+    end },
+    ['numToStr/Comment.nvim'] = { config = function()
         require('sigma.plugins.comment').setup()
     end },
     ['kyazdani42/nvim-web-devicons'] = 1,
-    ['lewis6991/gitsigns.nvim'] = { ['do'] = function()
+    ['lewis6991/gitsigns.nvim'] = { config = function()
         require('sigma.plugins.gitsigns').setup()
     end },
     ['ibhagwan/fzf-lua'] = { branch = 'main' },
     ['kkharji/sqlite.lua'] = { as = 'sqlite' },
-    ['AckslD/nvim-neoclip.lua'] = { ['do'] = function()
+    ['AckslD/nvim-neoclip.lua'] = { config = function()
         require('sigma.plugins.neoclip').setup()
     end },
-    ['nvim-pack/nvim-spectre'] = { ['do'] = function()
+    ['nvim-pack/nvim-spectre'] = { config = function()
         require('sigma.plugins.spectre').setup()
     end },
-    ['romgrk/barbar.nvim'] = { ['do'] = function()
+    ['romgrk/barbar.nvim'] = { config = function()
         require('sigma.plugins.bufferline').setup()
     end },
     ['nvim-lua/plenary.nvim'] = 1,
     ['norcalli/nvim-colorizer.lua'] = 1,
     ['stevearc/dressing.nvim'] = 1,
-    ['ziontee113/icon-picker.nvim'] = {['do'] = function ()
+    ['ziontee113/icon-picker.nvim'] = { config = function()
         require('sigma.plugins.iconpicker').setup()
-    end}
+    end }
 }
+local configs = {}
 local lsp_servers = { 'vimls', 'lua_ls' }
-local Plug = vim.fn['plug#']
+local Plug = function (plug_name, plug_config)
+    if (type(plug_config) == "table" and type(plug_config.config) == "function")
+    then
+        configs[plug_name] = plug_config.config
+    end
+
+    if plug_config ~= nil then
+        vim.fn['plug#'](plug_name, plug_config)
+    else
+        vim.fn['plug#'](plug_name)
+    end
+end
 local plug = {
     begin = vim.fn['plug#begin'],
     done = vim.fn['plug#end'],
-    add = function(plugin, config, override)
-        if (plugins[plugin] ~= nil and override)
+    add = function(plugin, config, no_override)
+        no_override = no_override or 0
+        config = config or 1
+        if (plugins[plugin] ~= nil and no_override ~= 1)
         then
-            plugins[plugin] = config or 1
+            return
+        else
+            plugins[plugin] = config
         end
     end,
     remove = function(plugin)
@@ -81,58 +99,65 @@ local plug = {
 
 local M = {
     setup = function(options)
-        vim.opt.termguicolors = 1
+        options = options or {}
+        vim.opt.termguicolors = true
         vim.opt.guifont = "SauceCodePro Nerd Font:h10"
-        vim.opt.signcolumn = 1
-        vim.opt.undofile = 1
-        vim.opt.swapfile = 1
-        vim.opt.backup = 1
+        vim.opt.signcolumn = 'yes'
+        vim.opt.undofile = true
+        vim.opt.swapfile = true
+        vim.opt.backup = true
         vim.opt.backupdir = '~/.local/state/nvim/backup'
-        vim.opt.title = 1
+        vim.opt.title = true
         vim.opt.laststatus = 3
-        vim.opt.noshowmode = 1
-        vim.opt.nocompatible = 1
+        vim.opt.showmode = false
+        vim.opt.compatible = false
         vim.opt.mouse = 'a'
         vim.g.mapleader = " "
-        vim.opt.syntax = 1
+        vim.opt.syntax = 'on'
         vim.opt.clipboard = 'unnamedplus'
-        vim.opt.nu = 1
-        vim.opt.relativenumber = 1
+        vim.opt.nu = true
+        vim.opt.relativenumber = true
         vim.opt.encoding = 'UTF-8'
-        vim.opt.smarttab = 1
-        vim.opt.smartindent = 1
+        vim.opt.smarttab = true
+        vim.opt.smartindent = true
         vim.opt.tabstop = 4
         vim.opt.softtabstop = 4
         vim.opt.shiftwidth = 4
-        vim.opt.expandtab = 1
-        vim.opt.nowrap = 1
+        vim.opt.expandtab = true
+        vim.opt.wrap = false
         vim.opt.textwidth = 0
         vim.opt.wrapmargin = 0
-        vim.opt.colorcolumn = 120
-        vim.opt.whichwrap = vim.opt.whichwrap .. '<>[]hl'
-        vim.opt.cursorline = 1
+        vim.opt.colorcolumn = '120'
+        vim.opt.whichwrap:append '<>[]hl'
+        vim.opt.cursorline = true
 
         local with_lsp = options.with_lsp or true
         local sigma_lsp_servers = options.lsp_servers or lsp_servers
         local tweaks = options.tweaks or { 'resizefix', 'highlightedyank' }
 
         if (with_lsp) then
-            plug.add('williamboman/mason.nvim')
-            plug.add('williamboman/mason-lspconfig.nvim')
-            plug.add('neovim/nvim-lspconfig')
-            plug.add('hrsh7th/cmp-nvim-lsp')
-            plug.add('hrsh7th/cmp-buffer')
-            plug.add('hrsh7th/cmp-path')
-            plug.add('hrsh7th/cmp-cmdline')
-            plug.add('hrsh7th/nvim-cmp')
-            plug.add('SirVer/ultisnips')
-            plug.add('quangnguyen30192/cmp-nvim-ultisnips')
-            plug.add('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+            plug.add('williamboman/mason.nvim', 1, 1)
+            plug.add('williamboman/mason-lspconfig.nvim', 1, 1)
+            plug.add('neovim/nvim-lspconfig', 1, 1)
+            plug.add('hrsh7th/cmp-nvim-lsp', 1, 1)
+            plug.add('hrsh7th/cmp-buffer', 1, 1)
+            plug.add('hrsh7th/cmp-path', 1, 1)
+            plug.add('hrsh7th/cmp-cmdline', 1, 1)
+            plug.add('hrsh7th/nvim-cmp', 1, 1)
+            plug.add('SirVer/ultisnips', 1, 1)
+            plug.add('quangnguyen30192/cmp-nvim-ultisnips', 1, 1)
+            plug.add('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' }, 1)
         end
 
         plug.begin()
         for plugin, config in pairs(plugins) do
-            Plug(plugin, config)
+            if (config ~= nil) then
+                if config == 1 then
+                    Plug(plugin)
+                else
+                    Plug(plugin, config)
+                end
+            end
         end
         plug.done()
 
@@ -141,6 +166,9 @@ local M = {
                 \|   PlugInstall --sync | q
                 \| endif]])
 
+        for _, plug_conf in pairs(configs) do
+            plug_conf()
+        end
 
         if (with_lsp) then
             require('sigma.lsp').setup(sigma_lsp_servers)
@@ -154,13 +182,13 @@ command! SigmaConfig :e ~/.config/nvim/lua/init.lua
 ]]
 
         vim.cmd [[
-function! sigma#run(command = '', split = 'h')
+function! SigmaRun(command = '', split = 'h')
     if $TERM == 'xterm-kitty'
         execute "!kitty @ launch " a:command getcwd()
     elseif $TMUX != ''
         execute "!tmux split-window -" . a:split "-c" getcwd() a:command
     else
-        echoerr 'Vim must be run in kitty terminal or tmux for sigma#run to work'
+        echoerr 'Vim must be run in kitty terminal or tmux for SigmaRun to work'
     endif
 endfunction
 ]]
@@ -169,7 +197,8 @@ endfunction
         require('sigma.mappings').setup()
     end,
     plug = plug,
-    plugins = plugins
+    plugins = plugins,
+    configs = configs
 }
 
 return M

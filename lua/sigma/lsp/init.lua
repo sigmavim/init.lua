@@ -78,7 +78,7 @@ local M = {
             })
         })
 
-        for _, v in ipairs(vim.g['sigma#lsp_servers']) do
+        for _, v in ipairs(lsp_servers) do
             require('lspconfig')[v].setup(require('sigma.lsp.defaults'))
         end
 
