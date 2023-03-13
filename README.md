@@ -45,7 +45,50 @@ to actually replace some base plugins.
 
 ## What is Sigma.nvim
 
-*Coming soon*
+Sigma is meant to be simple. It uses vim-plug as plugin manager, which is also
+wrapped in Lua functions, which allows full control over what plugins from base
+set are actually used.
+
+Sigma comes with sane (or maybe opinionated?) defaults and utilities to make
+your init.lua as small and readable as possible.
+
+Sigma comes with kyotonight.vim theme, which might easily be changed to any
+theme of your choice. There is also a plan of adding a possibility to create
+your own colorscheme providing just color palette.
+
+Sigma uses fzf which powers all the fuzzy finding in the default config. Check
+the recommended config section for FZF.
+
+Sigma uses nnn as file picker and file browser in place of netrw, it also 
+doesn't provide any file-tree plugin.
+
+Rationale for this choices is just... keeping it simple. Use the same tools
+inside of Neovim which you would use outside of it. Fzf is great all around fuzzy
+finder, unlike Telescope which might be amazing, but it's Neovim only.
+Nnn is a full blown, fully functional file manager. No file browser plugin can
+compare with that. And again, it's a tool for everyday use, not just in Neovim.
+
+If you prefer different workflow, replacing nnn.vim with a file-tree plugin of
+choice is just removing one plugin, adding another one, and replacing 2 remaps.
+You can also add a file-tree plugin on top of nnn, so you might just want to 
+replace only one remap, <C-n> with toggling your file-tree.
+
+If you don't want fzf, there would be a lot more changes to do, and it might
+miss the point of making your init.lua simple, as there would be at least dozen
+remaps to replace, and Telescope, which seems an only alternative here, requires
+a bunch of plugins and configuration to replicate what Sigma.nvim offers. So, if
+you just hate fzf or love Telescope, you might give Sigma and fzf a chance, but
+if you'd still want Telescope, NvChad might be a better choice.
+
+Intended git workflow is using lazygit in a kitty / tmux pane
+opened by <leader>gg keybinding. It follows the same rationale of using tools
+usable outside of Neovim, but you can easily install / use your preferred plugin
+for git... as the actual lazygit integration in Sigma is this single keybinding
+for opening lazygit in current working directory. There's no plugin for that in
+the base set.
+
+In the end, you might always take parts of Sigma.nvim as inspiration for making
+your own config, which is also a valid use case for this little project. :)
 
 ## Dependencies
 
@@ -233,7 +276,7 @@ require('lspconfig')['pyright'].setup(overrides)
 
 ## Known issues
 
-### Cursor line gets lost in Neovim
+### Cursor line gets lost
 
 For some reason 'nocursorline' option gets set *sometimes*. I haven't tracked
 the issue yet. A workaround (if you want cursorline that is) is adding following
