@@ -6,9 +6,15 @@
 --        /____/
 -- lua/sigma/plugins/iconpicker.lua
 
+local utils = require('sigma.utils')
 local M = {
     setup = function ()
         require("icon-picker").setup({ disable_legacy_commands = true })
+
+        utils.noremap('n', '<leader>fg', '<Cmd>IconPickerNormal nerd_font<CR>')
+        utils.noremap('n', '<leader>fe', '<Cmd>IconPickerNormal emoji<CR>')
+        utils.noremap('n', '<leader>fs', '<Cmd>IconPickerNormal symbols<CR>')
+        utils.noremap('n', '<leader>fa', '<Cmd>IconPickerNormal alt_font<CR>')
     end
 }
 

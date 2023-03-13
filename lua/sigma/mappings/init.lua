@@ -11,30 +11,12 @@ local utils = require('sigma.utils')
 -- TODO: move plugin specific mapping to its plugin files
 local M = {
     setup = function()
-        utils.noremap('n', '<leader>pp', '<Cmd>ProjectList<CR>')
-        utils.noremap('n', '<leader>fb', '<Cmd>NnnPicker<CR>')
         utils.noremap('n', '<Esc>', '<Cmd>noh<CR>')
         utils.noremap('n', '<leader>uc', '<Cmd>PlugClean<CR>')
         utils.noremap('n', '<leader>up', '<Cmd>PlugUpdate<CR>')
         utils.noremap('n', '<leader>uv', '<Cmd>PlugUpgrade<CR>')
-        utils.noremap('n', '<leader>us', '<Cmd>SigmaUpdate<CR>')
-        utils.noremap('n', '<leader>ff', '<Cmd>SigmaFiles<CR>')
-        utils.noremap('n', '<leader>fr', '<Cmd>SigmaRecentFiles<CR>')
-        utils.noremap('n', '<leader>rg', '<Cmd>SigmaRg<CR>')
-        utils.noremap('n', '<leader>fP', '<Cmd>SigmaConfig<CR>')
-        utils.noremap('n', '<leader>ss', '<Cmd>SigmaDashboard<CR>')
-        utils.noremap('n', '<leader>bi', '<Cmd>FzfLua buffers<CR>')
-        utils.noremap('n', '<leader>cp', '<Cmd>FzfLua commands<CR>')
-        utils.noremap('n', '<leader>ll', '<Cmd>FzfLua lines<CR>')
-        utils.noremap('n', '<leader>gl', '<Cmd>FzfLua blines<CR>')
-        utils.noremap('n', '<leader>gj', '<Cmd>FzfLua jumps<CR>')
-        utils.noremap('n', '<leader>km', '<Cmd>FzfLua keymaps<CR>')
-        utils.noremap('n', '<leader>S', '<cmd>lua require("spectre").open()<CR>')
-        utils.noremap('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>')
-        utils.noremap('v', '<leader>s', '<esc>:lua require("spectre").open_visual()<CR>')
-        utils.noremap('n', '<leader>sp', 'viw:lua require("spectre").open_file_search()<cr>')
-        utils.noremap('n', '<leader>yy', '<Cmd>lua require("neoclip.fzf")()<CR>')
-        utils.noremap('n', '<C-n>', '<Cmd>NnnPicker %:p:h<CR>')
+        utils.noremap('n', '<leader>us', '<Cmd>lua require("sigma").update()<CR>')
+        utils.noremap('n', '<leader>fP', '<Cmd>e ~/.config/nvim/init.lua<CR>')
 
         if (vim.env.TERM == 'xterm-kitty' or vim.env.TMUX ~= '') then
             if (vim.env.TMUX ~= '') then
@@ -42,10 +24,8 @@ local M = {
             else
                 utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun("lazygit -p")<C-j><CR>', { silent = true })
             end
-            utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun()<C-j><CR>', { silent = true })
+            utils.noremap('n', '<leader>tt', '<Cmd>call SigmaRun()<C-j><CR>', { silent = true })
         end
-
-        utils.noremap('n', '<leader>uu', '<Cmd>UndotreeToggle<CR>')
 
         -- you've got some moves
         utils.noremap('n', '<C-u>', '<C-u>zz')
@@ -85,18 +65,8 @@ local M = {
         utils.noremap('n', '<A-L>', '<C-w>|')
         utils.noremap('n', '<A-e>', '<C-w>=')
 
-        -- Bufferline
-        if utils.is_enabled('romgrk/barbar.nvim') then
-            utils.noremap('n', '<A-.>', '<Cmd>BufferNext<CR>')
-            utils.noremap('n', '<A-,>', '<Cmd>BufferPrevious<CR>')
-            utils.noremap('n', '<C-,>', '<Cmd>BufferMovePrevious<CR>')
-            utils.noremap('n', '<C-.>', '<Cmd>BufferMoveNext<CR>')
-            utils.noremap('n', '<A-p>', '<Cmd>BufferPin<CR>')
-            utils.noremap('n', '<A-C>', '<Cmd>BufferCloseAllButCurrentOrPinned<CR>')
-        else
-            utils.noremap('n', '<A-.>', '<Cmd>bn<CR>')
-            utils.noremap('n', '<A-,>', '<Cmd>bp<CR>')
-        end
+        utils.noremap('n', '<A-.>', '<Cmd>bn<CR>')
+        utils.noremap('n', '<A-,>', '<Cmd>bp<CR>')
 
         -- Close buffer
         utils.noremap('n', '<A-c>', '<Cmd>bd<CR>')
@@ -110,12 +80,6 @@ local M = {
 
         -- close window
         utils.noremap('n', '<leader>wc', '<C-w>c')
-
-        -- icon picker
-        utils.noremap('n', '<leader>fg', '<Cmd>IconPickerNormal nerd_font<CR>')
-        utils.noremap('n', '<leader>fe', '<Cmd>IconPickerNormal emoji<CR>')
-        utils.noremap('n', '<leader>fs', '<Cmd>IconPickerNormal symbols<CR>')
-        utils.noremap('n', '<leader>fa', '<Cmd>IconPickerNormal alt_font<CR>')
     end
 }
 

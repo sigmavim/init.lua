@@ -6,6 +6,7 @@
 --        /____/
 -- lua/sigma/plugins/neoclip.lua
 
+local utils = require('sigma.utils')
 local M = {
     setup = function()
         require('neoclip').setup({
@@ -13,6 +14,8 @@ local M = {
             enable_persistent_history = true,
             continuous_sync = true
         })
+
+        utils.noremap('n', '<leader>yy', '<Cmd>lua require("neoclip.fzf")()<CR>')
     end
 }
 

@@ -71,7 +71,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 Install Sigma.nvim:
 
 ```sh
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/lua/sigma/init.lua --create-dirs \
+sh -c 'curl -fLo "$HOME"/.config/nvim/lua/sigma/init.lua --create-dirs \
        https://raw.githubusercontent.com/wmwnuk/sigma.nvim/main/lua/sigma/init.lua'
 ```
 

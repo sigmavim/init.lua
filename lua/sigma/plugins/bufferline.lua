@@ -6,6 +6,7 @@
 --        /____/
 -- lua/sigma/plugins/bufferline.lua
 
+local utils = require('sigma.utils')
 local M = {
     setup = function()
         require('bufferline').setup({
@@ -13,6 +14,13 @@ local M = {
             icon_separator_inactive = '',
             icon_pinned = ''
         })
+
+        utils.noremap('n', '<A-.>', '<Cmd>BufferNext<CR>')
+        utils.noremap('n', '<A-,>', '<Cmd>BufferPrevious<CR>')
+        utils.noremap('n', '<C-,>', '<Cmd>BufferMovePrevious<CR>')
+        utils.noremap('n', '<C-.>', '<Cmd>BufferMoveNext<CR>')
+        utils.noremap('n', '<A-p>', '<Cmd>BufferPin<CR>')
+        utils.noremap('n', '<A-C>', '<Cmd>BufferCloseAllButCurrentOrPinned<CR>')
     end
 }
 

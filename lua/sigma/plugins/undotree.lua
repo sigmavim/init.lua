@@ -4,17 +4,12 @@
 --  ___/ / / /_/ / / / / / / /_/ / / / / / |/ / / / / / / /
 -- /____/_/\__, /_/ /_/ /_/\__,_(_)_/ /_/|___/_/_/ /_/ /_/
 --        /____/
--- lua/sigma/plugins/nnn.lua
+-- lua/sigma/plugins/undotree.lua
 
 local utils = require('sigma.utils')
 local M = {
     setup = function ()
-        vim.g['nnn#layout'] = { window = { width = 1, height = 1, border = 'none' } }
-        vim.g['nnn#replace_netrw'] = 1
-        vim.g['nnn#command'] = 'nnn -a -Pp -o'
-
-        utils.noremap('n', '<leader>fb', '<Cmd>NnnPicker<CR>')
-        utils.noremap('n', '<C-n>', '<Cmd>NnnPicker %:p:h<CR>')
+        utils.noremap('n', '<leader>uu', '<Cmd>UndotreeToggle<CR>')
     end
 }
 

@@ -8,11 +8,7 @@
 
 local M = {
     setup = function()
-        require('lualine').setup {
-            options = {
-                theme = 'kyotonight'
-            }
-        }
+        require('lualine').setup()
     end
 }
 

@@ -6,6 +6,7 @@
 --        /____/
 -- lua/sigma/plugins/spectre.lua
 
+local utils = require('sigma.utils')
 local M = {
     setup = function()
         require('spectre').setup({
@@ -39,6 +40,11 @@ local M = {
                 }
             }
         })
+
+        utils.noremap('n', '<leader>S', '<cmd>lua require("spectre").open()<CR>')
+        utils.noremap('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>')
+        utils.noremap('v', '<leader>s', '<esc>:lua require("spectre").open_visual()<CR>')
+        utils.noremap('n', '<leader>sp', 'viw:lua require("spectre").open_file_search()<cr>')
     end
 }
 

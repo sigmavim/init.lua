@@ -28,8 +28,12 @@ local plugins = {
     ['mcchrish/nnn.vim'] = { config = function()
         require('sigma.plugins.nnn').setup()
     end },
-    ['leafOfTree/vim-project'] = 1,
-    ['mbbill/undotree'] = 1,
+    ['leafOfTree/vim-project'] = { config = function()
+        require('sigma.plugins.project').setup()
+    end },
+    ['mbbill/undotree'] = { config = function ()
+        require('sigma.plugins.undotree').setup()
+    end },
     ['junegunn/fzf'] = 1,
     ['noahfrederick/vim-skeleton'] = { config = function()
         require('sigma.plugins.skeleton').setup()
@@ -47,7 +51,9 @@ local plugins = {
     ['lewis6991/gitsigns.nvim'] = { config = function()
         require('sigma.plugins.gitsigns').setup()
     end },
-    ['ibhagwan/fzf-lua'] = { branch = 'main' },
+    ['ibhagwan/fzf-lua'] = { branch = 'main', config = function ()
+        require('sigma.plugins.fzf').setup()
+    end },
     ['kkharji/sqlite.lua'] = { as = 'sqlite' },
     ['AckslD/nvim-neoclip.lua'] = { config = function()
         require('sigma.plugins.neoclip').setup()
@@ -166,6 +172,9 @@ local M = {
                 \|   PlugInstall --sync | q
                 \| endif]])
 
+        -- Assign mappings now, so that plugins can override them
+        require('sigma.mappings').setup()
+
         for _, plug_conf in pairs(configs) do
             plug_conf()
         end
@@ -173,13 +182,6 @@ local M = {
         if (with_lsp) then
             require('sigma.lsp').setup(sigma_lsp_servers)
         end
-
-        vim.cmd [[
-command! SigmaRecentFiles :FzfLua oldfiles
-command! SigmaFiles :FzfLua files
-command! SigmaRg :lua require('fzf-lua').live_grep({ cmd = "rg -g '!{.git,node_modules}/' --hidden --no-ignore --column", search = "", fzf_opts = { ['--nth'] = '2..' } })
-command! SigmaConfig :e ~/.config/nvim/lua/init.lua
-]]
 
         vim.cmd [[
 function! SigmaRun(command = '', split = 'h')
@@ -194,7 +196,9 @@ endfunction
 ]]
 
         require('sigma.tweaks').setup(tweaks)
-        require('sigma.mappings').setup()
+    end,
+    update = function ()
+        vim.cmd[[!sh -c 'curl -fLo "$HOME"/.config/nvim/lua/sigma/init.lua --create-dirs https://raw.githubusercontent.com/wmwnuk/sigma.nvim/main/lua/sigma/init.lua']]
     end,
     plug = plug,
     plugins = plugins,

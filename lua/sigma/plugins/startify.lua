@@ -6,6 +6,7 @@
 --        /____/
 -- lua/sigma/plugins/startify.lua
 
+local utils = require('sigma.utils')
 local M = {
     setup = function()
         vim.g.startify_custom_header = {
@@ -42,6 +43,8 @@ local M = {
         vim.cmd [[function! StartifyEntryFormat() abort
                 return 'v:lua.webDevIcons(absolute_path) . " " . entry_path'
             endfunction]]
+
+        utils.noremap('n', '<leader>ss', '<Cmd>Startify<CR>')
     end
 }
 
