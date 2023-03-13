@@ -190,7 +190,7 @@ function! SigmaRun(command = '', split = 'h')
     elseif $TMUX != ''
         execute "!tmux split-window -" . a:split "-c" getcwd() a:command
     else
-        echoerr 'Vim must be run in kitty terminal or tmux for SigmaRun to work'
+        echoerr 'Neovim must be run in kitty terminal or tmux for SigmaRun to work'
     endif
 endfunction
 ]]
