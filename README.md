@@ -43,9 +43,9 @@ too? Sigma.vim was made for you.
 Most of these distributions are pretty complex, and usually happen to be a pain
 to actually replace some base plugins.
 
-## What is Sigma.vim
+## What is Sigma.nvim
 
-...
+*Coming soon*
 
 ## Dependencies
 
