@@ -1,6 +1,26 @@
 # Sigma.nvim
 
-*Screenshots coming soon*
+<!--toc:start-->
+- [Sigma.nvim](#sigmanvim)
+  - [Why another Vim distribution](#why-another-vim-distribution)
+  - [What is Sigma.nvim](#what-is-sigmanvim)
+  - [Dependencies](#dependencies)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+    - [FZF](#fzf)
+    - [nnn](#nnn)
+    - [lazygit](#lazygit)
+    - [Overriding configuration](#overriding-configuration)
+    - [Plugins](#plugins)
+      - [Configuring plugins](#configuring-plugins)
+      - [Configuring an LSP server](#configuring-an-lsp-server)
+  - [Features](#features)
+  - [Known issues](#known-issues)
+    - [Cursor line gets lost](#cursor-line-gets-lost)
+<!--toc:end-->
+
+![dashboard](https://imgur.com/B6j6H4B.png) ![fzf](https://imgur.com/4G1QokS.png)
+![split](https://imgur.com/9fyyv3n.png) ![lazygit pane](https://imgur.com/ClilEoh.png)
 
 You might have already seen NvChad, but you want a simpler config and be a Chad
 too? Sigma.vim was made for you.
