@@ -19,7 +19,7 @@ local M = {
         utils.noremap('n', '<leader>fP', '<Cmd>e ~/.config/nvim/init.lua<CR>')
 
         if (vim.env.TERM == 'xterm-kitty' or vim.env.TMUX ~= '') then
-            if (vim.env.TMUX ~= '') then
+            if (vim.env.TMUX ~= nil) then
                 utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun("lazygit")<C-j><CR>', { silent = true })
             else
                 utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun("lazygit -p")<C-j><CR>', { silent = true })
