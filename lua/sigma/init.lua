@@ -202,7 +202,8 @@ endfunction
     end,
     plug = plug,
     plugins = plugins,
-    configs = configs
+    configs = configs,
+    lsp_servers = lsp_servers
 }
 
 return M
