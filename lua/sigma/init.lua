@@ -8,7 +8,7 @@
 -- Main sigma.nvim file
 
 local plugins = {
-    ['wmwnuk/sigma.nvim'] = { branch = 'main', ['do'] = ':SigmaUpdate' },
+    ['wmwnuk/sigma.nvim'] = { branch = 'main',['do'] = ':SigmaUpdate' },
     ['voidekh/kyotonight.vim'] = { config = function()
         require('sigma.plugins.kyotonight').setup()
     end },
@@ -31,7 +31,7 @@ local plugins = {
     ['leafOfTree/vim-project'] = { config = function()
         require('sigma.plugins.project').setup()
     end },
-    ['mbbill/undotree'] = { config = function ()
+    ['mbbill/undotree'] = { config = function()
         require('sigma.plugins.undotree').setup()
     end },
     ['junegunn/fzf'] = 1,
@@ -51,7 +51,7 @@ local plugins = {
     ['lewis6991/gitsigns.nvim'] = { config = function()
         require('sigma.plugins.gitsigns').setup()
     end },
-    ['ibhagwan/fzf-lua'] = { branch = 'main', config = function ()
+    ['ibhagwan/fzf-lua'] = { branch = 'main', config = function()
         require('sigma.plugins.fzf').setup()
     end },
     ['kkharji/sqlite.lua'] = { as = 'sqlite' },
@@ -73,7 +73,7 @@ local plugins = {
 }
 local configs = {}
 local lsp_servers = { 'vimls', 'lua_ls' }
-local Plug = function (plug_name, plug_config)
+local Plug = function(plug_name, plug_config)
     if (type(plug_config) == "table" and type(plug_config.config) == "function")
     then
         configs[plug_name] = plug_config.config
@@ -102,6 +102,10 @@ local plug = {
         plugins[plugin] = nil
     end
 }
+
+local update = function()
+    vim.cmd [[!sh -c 'curl -fLo "$HOME"/.config/nvim/lua/sigma/init.lua --create-dirs https://raw.githubusercontent.com/wmwnuk/sigma.nvim/main/lua/sigma/init.lua']]
+end
 
 local M = {
     setup = function(options)
@@ -196,10 +200,10 @@ endfunction
 ]]
 
         require('sigma.tweaks').setup(tweaks)
+
+        vim.api.nvim_create_user_command('SigmaUpdate', update)
     end,
-    update = function ()
-        vim.cmd[[!sh -c 'curl -fLo "$HOME"/.config/nvim/lua/sigma/init.lua --create-dirs https://raw.githubusercontent.com/wmwnuk/sigma.nvim/main/lua/sigma/init.lua']]
-    end,
+    update = update,
     plug = plug,
     plugins = plugins,
     configs = configs,
