@@ -201,7 +201,7 @@ endfunction
 
         require('sigma.tweaks').setup(tweaks)
 
-        vim.api.nvim_create_user_command('SigmaUpdate', update)
+        vim.api.nvim_create_user_command('SigmaUpdate', update, {desc = "Update Sigma.nvim bootstrap file"})
     end,
     update = update,
     plug = plug,
