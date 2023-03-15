@@ -14,9 +14,11 @@
     - [Plugins](#plugins)
       - [Configuring plugins](#configuring-plugins)
       - [Configuring an LSP server](#configuring-an-lsp-server)
+  - [Updating Sigma.nvim](#updating-sigmanvim)
   - [Features](#features)
   - [Known issues](#known-issues)
     - [Cursor line gets lost](#cursor-line-gets-lost)
+    - [After first run / change in plugins config is not loaded](#after-first-run-change-in-plugins-config-is-not-loaded)
 <!--toc:end-->
 
 ![dashboard](https://imgur.com/B6j6H4B.png) ![fzf](https://imgur.com/4G1QokS.png)
@@ -271,6 +273,12 @@ overrides.init_options = {param = 'value'}
 require('lspconfig')['pyright'].setup(overrides)
 ```
 
+## Updating Sigma.nvim
+
+All the plugins, including `sigma.nvim` are managed by `vim-plug`. Just run `:PlugUpdate` every once in a while. Or type
+`u` in the dashboard or use `<leader>up` keybinding. You also should update the main `lua/sigma/init.lua` file used to
+bootstrap `sigma.nvim` using command `:SigmaUpdate`, type `s` in the dashboard or use `<leader>us`.
+
 ## Features
 
 - Dashboard with useful shortcuts
@@ -305,3 +313,7 @@ autocmd to your init.lua:
 ```lua
 vim.cmd[[autocmd FileType * if &ft != 'startify' && &ft != 'dashboard' | :set cursorline | endif]]
 ```
+
+### After first run / change in plugins config is not loaded
+
+Have you tried turning it off and on again? I mean, just restart nvim.
