@@ -137,7 +137,7 @@ Install Sigma.nvim:
 
 ```sh
 sh -c 'curl -fLo "$HOME"/.config/nvim/lua/sigma/init.lua --create-dirs \
-       https://raw.githubusercontent.com/wmwnuk/sigma.nvim/main/lua/sigma/init.lua'
+       https://raw.githubusercontent.com/voidekh/sigma.nvim/main/lua/sigma/init.lua'
 ```
 
 ## Configuration

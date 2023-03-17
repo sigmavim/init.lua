@@ -8,7 +8,7 @@
 -- Main sigma.nvim file
 
 local plugins = {
-    ['wmwnuk/sigma.nvim'] = { branch = 'main',['do'] = ':SigmaUpdate' },
+    ['voidekh/sigma.nvim'] = { branch = 'main',['do'] = ':SigmaUpdate' },
     ['voidekh/kyotonight.vim'] = { config = function()
         require('sigma.plugins.kyotonight').setup()
     end },
@@ -201,7 +201,7 @@ endfunction
 
         require('sigma.tweaks').setup(tweaks)
 
-        vim.api.nvim_create_user_command('SigmaUpdate', update, {desc = "Update Sigma.nvim bootstrap file"})
+        vim.api.nvim_create_user_command('SigmaUpdate', update, { desc = "Update Sigma.nvim bootstrap file" })
     end,
     update = update,
     plug = plug,
