@@ -143,7 +143,7 @@ local M = {
 
         local with_lsp = options.with_lsp or true
         local sigma_lsp_servers = options.lsp_servers or lsp_servers
-        local tweaks = options.tweaks or { 'resizefix', 'highlightedyank' }
+        local tweaks = options.tweaks or { 'resizefix', 'highlightedyank', 'no-numbers-in-term' }
 
         if (with_lsp) then
             plug.add('williamboman/mason.nvim', 1, 1)
