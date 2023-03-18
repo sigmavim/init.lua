@@ -142,7 +142,7 @@ sh -c 'curl -fLo "$HOME"/.config/nvim/lua/sigma/init.lua --create-dirs \
 
 ## Configuration
 
-To use the default SigmaVimRc just add this line to your .vimrc or init.lua:
+To use the default Sigma.nvim just add this line to your init.lua:
 
 ```lua
 require('sigma').setup()
@@ -155,7 +155,7 @@ You can pass the following options to the `setup` function:
 local options = {
     with_lsp = true,
     lsp_servers = { 'vimls', 'lua_ls' },
-    tweaks = { 'resizefix', 'highlightedyank' },
+    tweaks = { 'resizefix', 'highlightedyank', 'no-numbers-in-term' },
 }
 ```
 
@@ -186,7 +186,7 @@ check out [this site](https://minsw.github.io/fzf-color-picker/).
 
 ### nnn
 
-Since nnn file manager is a big part of intended SigmaVimRc workflow, below is
+Since nnn file manager is a big part of intended Sigma.nvim workflow, below is
 the recommended configuration (note: preview-tui plugin requires kitty or tmux):
 
 ```sh

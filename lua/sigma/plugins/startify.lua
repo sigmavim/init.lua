@@ -18,7 +18,7 @@ local M = {
             [[          /____/                                                ]],
             [[   烈NEOVIM                                                     ]]
         }
-        vim.g.startify_custom_footer = vim.cmd [[call startify#pad(split(system('echo "In order to exit Vim, press and hold the Power button"'), '\n'))]]
+        vim.g.startify_custom_footer = vim.cmd [[call startify#pad(split(system('echo "In order to exit Neovim, press and hold the Power button"'), '\n'))]]
         vim.g.startify_lists = {
             { type = 'files',    header = { '   Recent Files' } },
             { type = 'commands', header = { '   Commands' } },
@@ -30,7 +30,7 @@ local M = {
             { f = { '  Find files        SPC f f', 'SigmaFiles' } },
             { n = { '  File browser      SPC f b', 'NnnPicker' } },
             { z = { '  Find word         SPC r g', 'SigmaRg' } },
-            { s = { '烈 Update SigmaVimRc SPC u s', 'SigmaUpdate' } },
+            { s = { '烈 Update Sigma.nvim SPC u s', 'SigmaUpdate' } },
             { u = { '  Update plugins    SPC u p', 'PlugUpdate' } },
             { c = { '  Configure         SPC f P', 'SigmaConfig' } },
         }
