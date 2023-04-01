@@ -10,20 +10,9 @@ local utils = require('sigma.utils')
 local M = {
     setup = function()
         require('bufferline').setup({
-            icons = {
-                separator = {
-
-                    left = '',
-                },
-                inactive = {
-                    separator = {
-                        left = ''
-                    }
-                },
-                pinned = {
-                    button = ''
-                }
-            }
+            icon_separator_active = '',
+            icon_separator_inactive = '',
+            icon_pinned = ''
         })
 
         utils.noremap('n', '<A-.>', '<Cmd>BufferNext<CR>')
