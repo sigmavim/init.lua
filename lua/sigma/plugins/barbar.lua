@@ -4,24 +4,15 @@
 --  ___/ / / /_/ / / / / / / /_/ / / / / / |/ / / / / / / /
 -- /____/_/\__, /_/ /_/ /_/\__,_(_)_/ /_/|___/_/_/ /_/ /_/
 --        /____/
--- lua/sigma/plugins/bufferline.lua
+-- lua/sigma/plugins/barbar.lua
 
 local utils = require('sigma.utils')
 local M = {
     setup = function()
         require('barbar').setup({
             icons = {
-                separator = {
-                    left = '',
-                },
-                inactive = {
-                    separator = {
-                        left = ''
-                    }
-                },
-                pinned = {
-                    button = ''
-                }
+                separator = {left = '', right = ''},
+                pinned = {button = ''}
             }
         })
 

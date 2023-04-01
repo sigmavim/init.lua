@@ -62,7 +62,7 @@ local plugins = {
         require('sigma.plugins.spectre').setup()
     end },
     ['romgrk/barbar.nvim'] = { config = function()
-        require('sigma.plugins.bufferline').setup()
+        require('sigma.plugins.barbar').setup()
     end },
     ['nvim-lua/plenary.nvim'] = 1,
     ['norcalli/nvim-colorizer.lua'] = 1,
