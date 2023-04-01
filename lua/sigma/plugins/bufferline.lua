@@ -9,10 +9,9 @@
 local utils = require('sigma.utils')
 local M = {
     setup = function()
-        require('bufferline').setup({
+        require('barbar').setup({
             icons = {
                 separator = {
-
                     left = '',
                 },
                 inactive = {
