@@ -194,7 +194,11 @@ function! SigmaRun(command = '', split = 'h')
     elseif $TMUX != ''
         execute "!tmux split-window -" . a:split "-c" getcwd() a:command
     else
-        vsplit | execute "term" .. a:command
+        if a:split == 'h'
+            split | execute "term" .. " " .. a:command
+        else
+            vsplit | execute "term" .. " " .. a:command
+        endif
     endif
 endfunction
 ]]
