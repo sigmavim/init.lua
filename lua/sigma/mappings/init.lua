@@ -83,7 +83,7 @@ local M = {
         utils.noremap('t', '<C-space>', '<C-\\><C-n>')
 
         -- open netrw
-        utils.noremap('n', '<leader>sx', '<Cmd>Sex<CR>') -- ( ͡° ͜ʖ ͡°)
+        utils.noremap('n', '<leader>ex', '<Cmd>Ex<CR>')
     end
 }
 
