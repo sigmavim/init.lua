@@ -18,14 +18,12 @@ local M = {
         utils.noremap('n', '<leader>us', '<Cmd>lua require("sigma").update()<CR>')
         utils.noremap('n', '<leader>fP', '<Cmd>e ~/.config/nvim/init.lua<CR>')
 
-        if (vim.env.TERM == 'xterm-kitty' or vim.env.TMUX ~= '') then
-            if (vim.env.TMUX ~= nil) then
-                utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun("lazygit")<C-j><CR>', { silent = true })
-            else
-                utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun("lazygit -p")<C-j><CR>', { silent = true })
-            end
-            utils.noremap('n', '<leader>tt', '<Cmd>call SigmaRun()<C-j><CR>', { silent = true })
+        if (vim.env.TERM == 'xterm-kitty') then
+            utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun("lazygit -p")<C-j><CR>', { silent = true })
+        else
+            utils.noremap('n', '<leader>gg', '<Cmd>call SigmaRun("lazygit")<C-j><CR>', { silent = true })
         end
+        utils.noremap('n', '<leader>tt', '<Cmd>call SigmaRun()<C-j><CR>', { silent = true })
 
         -- you've got some moves
         utils.noremap('n', '<C-u>', '<C-u>zz')
