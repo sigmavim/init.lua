@@ -78,6 +78,12 @@ local M = {
 
         -- close window
         utils.noremap('n', '<leader>wc', '<C-w>c')
+
+        -- escape terminal mode
+        utils.noremap('t', '<C-space>', '<C-\\><C-n>')
+
+        -- open netrw
+        utils.noremap('n', '<leader>sx', '<Cmd>Sex<CR>') -- ( ͡° ͜ʖ ͡°)
     end
 }
 
