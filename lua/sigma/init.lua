@@ -47,7 +47,7 @@ local plugins = {
     ['numToStr/Comment.nvim'] = { config = function()
         require('sigma.plugins.comment').setup()
     end },
-    ['kyazdani42/nvim-web-devicons'] = 1,
+    ['nvim-tree/nvim-web-devicons'] = { commit = 'f16ec8f' },
     ['lewis6991/gitsigns.nvim'] = { config = function()
         require('sigma.plugins.gitsigns').setup()
     end },
