@@ -8,7 +8,7 @@
 -- Main sigma.nvim file
 
 local plugins = {
-    ['voidekh/sigma.nvim'] = { branch = 'next', ['do'] = ':SigmaUpdate' },
+    ['voidekh/sigma.nvim'] = { branch = 'main', ['do'] = ':SigmaUpdate' },
     ['voidekh/kyotonight.vim'] = { tag = 'v1.0.0', config = function()
         require('sigma.plugins.kyotonight').setup()
     end },
