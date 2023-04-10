@@ -8,66 +8,65 @@
 -- Main sigma.nvim file
 
 local plugins = {
-    ['voidekh/sigma.nvim'] = { branch = 'main',['do'] = ':SigmaUpdate' },
+    ['voidekh/sigma.nvim'] = { branch = 'next', ['do'] = ':SigmaUpdate' },
     ['voidekh/kyotonight.vim'] = { tag = 'v1.0.0', config = function()
         require('sigma.plugins.kyotonight').setup()
     end },
-    ['907th/vim-auto-save'] = { config = function()
+    ['907th/vim-auto-save'] = { commit = '2e3e54e', config = function()
         require('sigma.plugins.autosave').setup()
     end },
-    ['eshion/vim-sync'] = { config = function()
+    ['eshion/vim-sync'] = { commit = '8456c14', config = function()
         require('sigma.plugins.sync').setup()
     end },
-    ['skywind3000/asyncrun.vim'] = 1,
-    ['lambdalisue/suda.vim'] = { config = function()
+    ['skywind3000/asyncrun.vim'] = { tag = '2.11.16' },
+    ['lambdalisue/suda.vim'] = { tag = 'v0.4.1', config = function()
         require('sigma.plugins.suda').setup()
     end },
-    ['tpope/vim-abolish'] = 1,
-    ['honza/vim-snippets'] = 1,
-    ['dbeniamine/cheat.sh-vim'] = 1,
-    ['mcchrish/nnn.vim'] = { config = function()
+    ['tpope/vim-abolish'] = { commit = 'cb3dcb2' },
+    ['honza/vim-snippets'] = { commit = 'c7e61b7' },
+    ['mcchrish/nnn.vim'] = { commit = '46bb835', config = function()
         require('sigma.plugins.nnn').setup()
     end },
-    ['leafOfTree/vim-project'] = { config = function()
+    ['leafOfTree/vim-project'] = { commit = 'faa35e6', config = function()
         require('sigma.plugins.project').setup()
     end },
-    ['mbbill/undotree'] = { config = function()
+    ['mbbill/undotree'] = { commit = '485f01e', config = function()
         require('sigma.plugins.undotree').setup()
     end },
-    ['junegunn/fzf'] = 1,
-    ['noahfrederick/vim-skeleton'] = { config = function()
+    ['junegunn/fzf'] = { tag = '0.39.0' },
+    ['noahfrederick/vim-skeleton'] = { commit = 'aba9eb0', config = function()
         require('sigma.plugins.skeleton').setup()
     end },
-    ['mhinz/vim-startify'] = { config = function()
+    ['mhinz/vim-startify'] = { commit = '81e36c3', config = function()
         require('sigma.plugins.startify').setup()
     end },
-    ['nvim-lualine/lualine.nvim'] = { config = function()
+    ['nvim-lualine/lualine.nvim'] = { commit = '84ffb80', config = function()
         require('sigma.plugins.lualine').setup()
     end },
-    ['numToStr/Comment.nvim'] = { config = function()
+    ['numToStr/Comment.nvim'] = { commit = '8d3aa5c', config = function()
         require('sigma.plugins.comment').setup()
     end },
     ['nvim-tree/nvim-web-devicons'] = { commit = 'f16ec8f' },
-    ['lewis6991/gitsigns.nvim'] = { config = function()
+    ['lewis6991/gitsigns.nvim'] = { commit = '372d5cb', config = function()
         require('sigma.plugins.gitsigns').setup()
     end },
-    ['ibhagwan/fzf-lua'] = { branch = 'main', config = function()
+    ['ibhagwan/fzf-lua'] = { commit = '04d5a52', config = function()
         require('sigma.plugins.fzf').setup()
     end },
-    ['kkharji/sqlite.lua'] = { as = 'sqlite' },
-    ['AckslD/nvim-neoclip.lua'] = { config = function()
+    ['kkharji/sqlite.lua'] = { commit = '376e473', as = 'sqlite' },
+    ['AckslD/nvim-neoclip.lua'] = { commit = '5b9286a', config = function()
         require('sigma.plugins.neoclip').setup()
     end },
-    ['nvim-pack/nvim-spectre'] = { config = function()
+    ['nvim-pack/nvim-spectre'] = { commit = '6e5ce37', config = function()
         require('sigma.plugins.spectre').setup()
     end },
     ['romgrk/barbar.nvim'] = { tag = 'v1.5.0', config = function()
         require('sigma.plugins.bufferline').setup()
     end },
-    ['nvim-lua/plenary.nvim'] = 1,
-    ['norcalli/nvim-colorizer.lua'] = 1,
-    ['stevearc/dressing.nvim'] = 1,
-    ['ziontee113/icon-picker.nvim'] = { config = function()
+    ['nvim-lua/plenary.nvim'] = { commit = '9ac3e95' },
+    ['norcalli/nvim-colorizer.lua'] = { commit = '36c610a' },
+    ['stevearc/dressing.nvim'] = { commit = '91b9ba8' },
+    ['ziontee113/icon-picker.nvim'] = { commit = '66d37ce', config = function()
         require('sigma.plugins.iconpicker').setup()
     end }
 }
