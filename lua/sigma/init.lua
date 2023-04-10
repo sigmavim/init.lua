@@ -9,7 +9,7 @@
 
 local plugins = {
     ['voidekh/sigma.nvim'] = { branch = 'main',['do'] = ':SigmaUpdate' },
-    ['voidekh/kyotonight.vim'] = { config = function()
+    ['voidekh/kyotonight.vim'] = { tag = 'v1.0.0', config = function()
         require('sigma.plugins.kyotonight').setup()
     end },
     ['907th/vim-auto-save'] = { config = function()
