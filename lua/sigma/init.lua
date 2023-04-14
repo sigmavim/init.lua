@@ -191,7 +191,14 @@ function! SigmaRun(command = '', split = 'h')
     if $TERM == 'xterm-kitty'
         execute "!kitty @ launch " a:command getcwd()
     elseif $TMUX != ''
-        execute "!tmux split-window -" . a:split "-c" getcwd() a:command
+        let s:split = a:split
+        if s:split == 'v'
+            let s:split = 'h'
+        else
+            let s:split = 'v'
+        endif
+            
+        execute "!tmux split-window -" .. s:split "-c" getcwd() a:command
     else
         if a:split == 'h'
             split | execute "term" .. " " .. a:command
