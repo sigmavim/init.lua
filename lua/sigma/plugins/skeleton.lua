@@ -9,6 +9,7 @@
 local M = {
     setup = function ()
         vim.call('system', 'mkdir -p ~/.vim/templates')
+        vim.g.sigma_skeleton_fill = 1
     end
 }
  return M

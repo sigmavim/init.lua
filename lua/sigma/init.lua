@@ -12,6 +12,9 @@ local plugins = {
     ['voidekh/kyotonight.vim'] = { tag = 'v1.0.0', config = function()
         require('sigma.plugins.kyotonight').setup()
     end },
+    ['voidekh/sigma-skeleton'] = { tag = 'v1.0.2', config = function()
+        require('sigma.plugins.skeleton').setup()
+    end },
     ['907th/vim-auto-save'] = { commit = '2e3e54e', config = function()
         require('sigma.plugins.autosave').setup()
     end },
@@ -34,9 +37,6 @@ local plugins = {
         require('sigma.plugins.undotree').setup()
     end },
     ['junegunn/fzf'] = { tag = '0.39.0' },
-    ['noahfrederick/vim-skeleton'] = { commit = 'aba9eb0', config = function()
-        require('sigma.plugins.skeleton').setup()
-    end },
     ['mhinz/vim-startify'] = { commit = '81e36c3', config = function()
         require('sigma.plugins.startify').setup()
     end },
