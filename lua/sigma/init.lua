@@ -8,11 +8,11 @@
 -- Main sigma.nvim file
 
 local plugins = {
-    ['voidekh/sigma.nvim'] = { branch = 'main', ['do'] = ':SigmaUpdate' },
-    ['voidekh/kyotonight.vim'] = { tag = 'v1.0.0', config = function()
+    ['sigmavim/init.lua'] = { branch = 'next', ['do'] = ':SigmaUpdate' },
+    ['sigmavim/kyotonight'] = { tag = 'v1.0.0', config = function()
         require('sigma.plugins.kyotonight').setup()
     end },
-    ['voidekh/sigma-skeleton'] = { tag = 'v1.0.2', config = function()
+    ['sigmavim/skeleton'] = { tag = 'v1.0.2', config = function()
         require('sigma.plugins.skeleton').setup()
     end },
     ['907th/vim-auto-save'] = { commit = '2e3e54e', config = function()
@@ -26,47 +26,46 @@ local plugins = {
         require('sigma.plugins.suda').setup()
     end },
     ['tpope/vim-abolish'] = { commit = 'cb3dcb2' },
-    ['honza/vim-snippets'] = { commit = 'c7e61b7' },
-    ['mcchrish/nnn.vim'] = { commit = '46bb835', config = function()
+    ['honza/vim-snippets'] = { commit = '76e35f3' },
+    ['mcchrish/nnn.vim'] = { commit = 'e0104e3', config = function()
         require('sigma.plugins.nnn').setup()
     end },
-    ['leafOfTree/vim-project'] = { commit = 'faa35e6', config = function()
+    ['leafOfTree/vim-project'] = { commit = 'f6aa4e8', config = function()
         require('sigma.plugins.project').setup()
     end },
     ['mbbill/undotree'] = { commit = '485f01e', config = function()
         require('sigma.plugins.undotree').setup()
     end },
-    ['junegunn/fzf'] = { tag = '0.39.0' },
     ['mhinz/vim-startify'] = { commit = '81e36c3', config = function()
         require('sigma.plugins.startify').setup()
     end },
-    ['nvim-lualine/lualine.nvim'] = { commit = '84ffb80', config = function()
+    ['nvim-lualine/lualine.nvim'] = { commit = '05d78e9', config = function()
         require('sigma.plugins.lualine').setup()
     end },
-    ['numToStr/Comment.nvim'] = { commit = '8d3aa5c', config = function()
+    ['numToStr/Comment.nvim'] = { tag = 'v0.8.0', config = function()
         require('sigma.plugins.comment').setup()
     end },
-    ['nvim-tree/nvim-web-devicons'] = { commit = 'f16ec8f' },
-    ['lewis6991/gitsigns.nvim'] = { commit = '372d5cb', config = function()
+    ['nvim-tree/nvim-web-devicons'] = { commit = '2a12502' },
+    ['lewis6991/gitsigns.nvim'] = { commit = '4455bb5', config = function()
         require('sigma.plugins.gitsigns').setup()
     end },
-    ['ibhagwan/fzf-lua'] = { commit = '04d5a52', config = function()
+    ['ibhagwan/fzf-lua'] = { commit = '8d6b638', config = function()
         require('sigma.plugins.fzf').setup()
     end },
-    ['kkharji/sqlite.lua'] = { commit = '376e473', as = 'sqlite' },
-    ['AckslD/nvim-neoclip.lua'] = { commit = '5b9286a', config = function()
+    ['kkharji/sqlite.lua'] = { commit = 'b7e28c8', as = 'sqlite' },
+    ['AckslD/nvim-neoclip.lua'] = { commit = '4e406ae', config = function()
         require('sigma.plugins.neoclip').setup()
     end },
-    ['nvim-pack/nvim-spectre'] = { commit = '6e5ce37', config = function()
+    ['nvim-pack/nvim-spectre'] = { commit = '1abe23e', config = function()
         require('sigma.plugins.spectre').setup()
     end },
-    ['romgrk/barbar.nvim'] = { tag = 'v1.5.0', config = function()
-        require('sigma.plugins.bufferline').setup()
+    ['romgrk/barbar.nvim'] = { tag = 'v1.6.5', config = function()
+        require('sigma.plugins.barbar').setup()
     end },
-    ['nvim-lua/plenary.nvim'] = { commit = '9ac3e95' },
+    ['nvim-lua/plenary.nvim'] = { commit = '499e074' },
     ['norcalli/nvim-colorizer.lua'] = { commit = '36c610a' },
-    ['stevearc/dressing.nvim'] = { commit = '91b9ba8' },
-    ['ziontee113/icon-picker.nvim'] = { commit = '66d37ce', config = function()
+    ['stevearc/dressing.nvim'] = { commit = 'f16d758' },
+    ['ziontee113/icon-picker.nvim'] = { commit = 'e6dca18', config = function()
         require('sigma.plugins.iconpicker').setup()
     end }
 }
@@ -103,7 +102,7 @@ local plug = {
 }
 
 local update = function()
-    vim.cmd [[!sh -c 'curl -fLo "$HOME"/.config/nvim/lua/sigma/init.lua --create-dirs https://raw.githubusercontent.com/wmwnuk/sigma.nvim/main/lua/sigma/init.lua']]
+    vim.cmd [[!sh -c 'curl -fLo "$HOME"/.config/nvim/lua/sigma/init.lua --create-dirs https://raw.githubusercontent.com/sigmavim/init.lua/main/lua/sigma/init.lua']]
 end
 
 local M = {

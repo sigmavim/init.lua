@@ -34,7 +34,7 @@ to actually replace some base plugins. Sigma.nvim aims to be simple.
 
 ## What is Sigma.nvim
 
-Sigma.nvim is [SigmaVimRc for Neovim](https://github.com/voidekh/SigmaVimRc#what-is-sigma).
+Sigma.nvim is [SigmaVimRc for Neovim](https://github.com/sigmavim/vimrc#what-is-sigma).
 
 Most of the points in its README apply here as well. It's pure Lua, only a bit
 complicated part here is the LSP configuration, but you cannot do much about it.
@@ -82,7 +82,7 @@ Install Sigma.nvim:
 
 ```sh
 sh -c 'curl -fLo "$HOME"/.config/nvim/lua/sigma/init.lua --create-dirs \
-       https://raw.githubusercontent.com/voidekh/sigma.nvim/main/lua/sigma/init.lua'
+       https://raw.githubusercontent.com/sigmavim/init.lua/main/lua/sigma/init.lua'
 ```
 
 ## Configuration
@@ -177,7 +177,7 @@ require('sigma').plug.add('plugin/name', {branch = 'master'})
 Here's an example from Sigma.nvim core:
 
 ```lua
-require('sigma').plug.add('voidekh/kyotonight.vim', { config = function()
+require('sigma').plug.add('sigmavim/kyotonight', { config = function()
         require('sigma.plugins.kyotonight').setup()
     end })
 ```
