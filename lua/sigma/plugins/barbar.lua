@@ -9,18 +9,21 @@
 local utils = require('sigma.utils')
 local M = {
     setup = function()
-        require('bufferline').setup({
-            icon_separator_active = '',
-            icon_separator_inactive = '',
-            icon_pinned = ''
+        require('barbar').setup({
+            icons = {
+                button = '',
+                separator = { left = '' },
+                inactive = { separator = { left = '' } },
+                pinned = { button = '', filename = true }
+            }
         })
 
         utils.noremap('n', '<A-.>', '<Cmd>BufferNext<CR>')
         utils.noremap('n', '<A-,>', '<Cmd>BufferPrevious<CR>')
-        utils.noremap('n', '<C-,>', '<Cmd>BufferMovePrevious<CR>')
-        utils.noremap('n', '<C-.>', '<Cmd>BufferMoveNext<CR>')
+        utils.noremap('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>')
+        utils.noremap('n', '<A->>', '<Cmd>BufferMoveNext<CR>')
         utils.noremap('n', '<A-p>', '<Cmd>BufferPin<CR>')
-        utils.noremap('n', '<A-C>', '<Cmd>BufferCloseAllButCurrentOrPinned<CR>')
+        utils.noremap('n', '<A-P>', '<Cmd>BufferCloseAllButCurrentOrPinned<CR>')
     end
 }
 
