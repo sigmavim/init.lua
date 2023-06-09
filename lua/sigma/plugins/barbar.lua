@@ -11,7 +11,7 @@ local M = {
     setup = function()
         require('barbar').setup({
             icons = {
-                button = '',
+                button = '󰖭',
                 separator = { left = '' },
                 inactive = { separator = { left = '' } },
                 pinned = { button = '', filename = true }
