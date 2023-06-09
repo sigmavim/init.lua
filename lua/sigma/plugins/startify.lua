@@ -16,7 +16,7 @@ local M = {
             [[    ___/ / / /_/ / / / / / / /_/ / / / / / |/ / / / / / / /     ]],
             [[   /____/_/\__, /_/ /_/ /_/\__,_(_)_/ /_/|___/_/_/ /_/ /_/      ]],
             [[          /____/                                                ]],
-            [[   烈NEOVIM                                                     ]]
+            [[   󰒠 NEOVIM                                                     ]]
         }
         vim.g.startify_custom_footer = vim.cmd [[call startify#pad(split(system('echo "In order to exit Neovim, press and hold the Power button"'), '\n'))]]
         vim.g.startify_lists = {
@@ -26,12 +26,12 @@ local M = {
         }
         vim.g.startify_commands = {
             { p = { '  Open project      SPC p p', 'ProjectList' } },
-            { r = { '  Recent files      SPC f r', 'SigmaRecentFiles' } },
+            { r = { '󰋚  Recent files      SPC f r', 'SigmaRecentFiles' } },
             { f = { '  Find files        SPC f f', 'SigmaFiles' } },
             { n = { '  File browser      SPC f b', 'NnnPicker' } },
-            { z = { '  Find word         SPC r g', 'SigmaRg' } },
-            { s = { '烈 Update Sigma.nvim SPC u s', 'SigmaUpdate' } },
-            { u = { '  Update plugins    SPC u p', 'PlugUpdate' } },
+            { z = { '󰈞  Find word         SPC r g', 'SigmaRg' } },
+            { s = { '󰒠  Update Sigma.nvim SPC u s', 'SigmaUpdate' } },
+            { u = { '  Update plugins    SPC u p', 'PlugUpdate' } },
             { c = { '  Configure         SPC f P', 'SigmaConfig' } },
         }
         function _G.webDevIcons(path)
