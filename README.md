@@ -1,5 +1,9 @@
 # Sigma.nvim
 
+**This project is no longer maintained.**
+You might want to take a look at [ShrikeVim](https://github.com/shrikecode/shrike.vim), although it is Vim (not nvim) distribution.
+Another option is... the plenty of other active Neovim distributions. :)
+
 ![dashboard](https://imgur.com/B6j6H4B.png) ![fzf](https://imgur.com/4G1QokS.png)
 ![split](https://imgur.com/9fyyv3n.png) ![lazygit pane](https://imgur.com/ClilEoh.png)
 
